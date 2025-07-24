@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 18:02:23 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/24 23:10:42 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/24 23:40:00 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ bool	parssing(t_config *game, char *f_name)
 				else
 					return(message_error("textur parssing faild"), false);
 			}
+			// if(list >= 4 && list < 6)
+			// {
+
+			// }
 		}
 		line = get_next_line(fd);
 	}
