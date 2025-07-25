@@ -9,7 +9,8 @@ SRCS = cub3D.c \
 	   parssing/errors.c			\
 	   parssing/leaks_mem.c			\
 	   parssing/parssing_utils.c	\
-	   parssing/texture_init.c	\
+	   parssing/texture_init.c		\
+	   parssing/colors_init.c		\
 
 OBJS = $(SRCS:.c=.o)
 LIB = libft/libft.a

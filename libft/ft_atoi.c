@@ -1,54 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parssing_utils.c                                   :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 23:10:21 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/25 14:55:02 by ymouchta         ###   ########.fr       */
+/*   Created: 2025/07/25 16:23:39 by ymouchta          #+#    #+#             */
+/*   Updated: 2025/07/25 16:24:04 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "libft.h"
 
-char *remove_nline(char *str)
+int	ft_atoi(const char *str)
 {
-	int		len;
-	char	*dest;
-	int		i;
-	int		j;
+	int					i;
+	int					x;
+	unsigned long long	t;
 
 	i = 0;
-	j = 0;
-	len = 0;
-	while(str[i])
+	x = 1;
+	t = 0;
+	while ((str[i] <= 13 && str[i] >= 9) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if(str[i] != '\n')
-			len++;
+		if (str[i] == '-')
+			x = -x;
 		i++;
 	}
-	dest = malloc(len + 1);
-	i = 0;
-	while(str[i])
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if(str[i] != '\n')
-			dest[j++] = str[i++];
-		else
-			i++;
+		t = (t * 10) + (str[i] - 48);
+		i++;
 	}
-	dest[j] = 0;
-	return(dest);
-}
-
-int	size_tab(char **str)
-{
-	int	len;
-
-	len = 0;
-	if(!str)
-		return (0);
-	while (str[len])
-		len++;
-	return(len);
+	return ((int)(t * x));
 }

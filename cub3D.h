@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 17:24:17 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/24 23:11:36 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:32:54 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ void	message_error(char *str);
 bool	parssing(t_config *game, char *f_name);
 bool	check_name(char *name);
 bool	path_name(char *name);
+bool	color_init(char *str);
 
 // parssing utils
+int	size_tab(char **str);
 char *remove_nline(char *str);
 
 // textur init
