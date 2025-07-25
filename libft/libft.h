@@ -17,6 +17,7 @@
 # include <unistd.h>
 
 char	*ft_strdup(const char *s);
+void	ft_putstr_fd(char *s, int fd);
 int		ft_atoi(const char *str);
 int		ft_isdigit(int c);
 char	*ft_strjoin(char const *s1, char const *s2);

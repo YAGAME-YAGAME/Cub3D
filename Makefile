@@ -11,6 +11,7 @@ SRCS = cub3D.c \
 	   parssing/parssing_utils.c	\
 	   parssing/texture_init.c		\
 	   parssing/colors_init.c		\
+	   parssing/map_parss.c			\
 
 OBJS = $(SRCS:.c=.o)
 LIB = libft/libft.a

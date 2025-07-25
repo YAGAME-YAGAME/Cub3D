@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 18:02:23 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/25 16:39:35 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/25 19:07:09 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,22 @@ bool	if_line_empty(char *line)
 	return (true);
 }
 
+void	read_mapp()
+{
+
+}
+
 
 bool	parssing(t_config *game, char *f_name)
 {
 	char	*line;
+	char	*map;
+	char	*tmp;
 	int		list;
 	int		fd;
 
 	list = 0;
+	map = NULL;
 	if (!check_name(f_name))
 		return (message_error("invalide file name"), false);
 	fd = open(f_name, O_RDWR, 0777);
@@ -62,13 +70,23 @@ bool	parssing(t_config *game, char *f_name)
 			}
 			else if(list >= 4 && list < 6)
 			{
-				if(color_init(line))
+				if(color_init(game, line))
 					list++;
 				else
 					return(message_error("color parssing faild"), false);
 			}
+			else
+			{
+				tmp = ft_strdup(map);
+				if(map)
+					free(map);
+				map = ft_strjoin(tmp, line);
+				if(tmp)
+					free(tmp);
+			}
 		}
 		line = get_next_line(fd);
 	}
+	parssing_map(game, map);
 	return (true);
 }

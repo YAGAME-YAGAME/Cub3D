@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 18:04:06 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/25 18:06:39 by ymouchta         ###   ########.fr       */
+/*   Created: 2025/07/25 18:07:39 by ymouchta          #+#    #+#             */
+/*   Updated: 2025/07/25 18:07:51 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "libft.h"
+#include <unistd.h>
 
-void	message_error(char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
-	// red error message
-	ft_putstr_fd("\033[31mError\n", 2);
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd("\033[0m", 2);
+	int	i;
 
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }

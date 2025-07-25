@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 14:49:32 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/25 17:23:36 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/25 18:26:54 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		scan_number(char *str, int *index)
 	int		i;
 	int		j;
 	int		color;
+
 	i = 0;
 	j = *index;
 	while(str[j] && ft_isdigit(str[j]))
@@ -35,39 +36,43 @@ int		scan_number(char *str, int *index)
 int		parss_number_color(char *line)
 {
 	int	i;
+	int R;
+	int G;
+	int B;
 
 	i = 0;
-	int R = scan_number(line, &i);
+	R = scan_number(line, &i);
 	i++;
-	int G = scan_number(line, &i);
+	G = scan_number(line, &i);
 	i++;
-	int B = scan_number(line, &i);
-	i++;
-	if(line[i] != 0)
+	B = scan_number(line, &i);
+	if(line[i] != 0 || R < 0 || B < 0 || G < 0)
 		return(-1);
-	return(100);
+	// printf(" R = %d, G = %d, B = %d\n", R, G, B);
+	return((R << 16) | (G << 8) | B);
 }
 
-bool	parss_color(char **str)
+bool	parss_color(t_config *game, char **str)
 {
-	int		color;
 	char	*new;
 
 	if(!ft_strcmp(str[0], "F"))
 	{
 		new = remove_nline(str[1]);
-		color = parss_number_color(new);
+		// printf("for F : ");
+		game->floor_color = parss_number_color(new);
 		free(new);
-		if(color < 0)
+		if(game->floor_color < 0)
 			return(false);
 		return (true);
 	}
 	else if(!ft_strcmp(str[0], "C"))
 	{
 		new = remove_nline(str[1]);
-		color = parss_number_color(new);
+		// printf("for C : ");
+		game->ceiling_color = parss_number_color(new);
 		free(new);
-		if(color < 0)
+		if(game->ceiling_color < 0)
 			return(false);
 		return (true);
 	}
@@ -77,7 +82,7 @@ bool	parss_color(char **str)
 
 
 
-bool	color_init(char *str)
+bool	color_init(t_config *game, char *str)
 {
 	char	**tab;
 
@@ -86,7 +91,7 @@ bool	color_init(char *str)
 		return(message_error("error split"), false);
 	if(size_tab(tab) != 2)
 		return(clean_tab(&tab), false);
-	if(!parss_color(tab))
+	if(!parss_color(game, tab))
 		return(clean_tab(&tab), false);
 	return(true);
 }
