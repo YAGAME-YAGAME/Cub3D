@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 18:02:23 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/25 19:07:09 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/26 22:46:05 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ bool	parssing(t_config *game, char *f_name)
 
 	list = 0;
 	map = NULL;
+	game->map_width = 0;
+	game->map_height = 0;
 	if (!check_name(f_name))
 		return (message_error("invalide file name"), false);
 	fd = open(f_name, O_RDWR, 0777);
@@ -77,6 +79,9 @@ bool	parssing(t_config *game, char *f_name)
 			}
 			else
 			{
+				if((int)ft_strlen(line) > game->map_width)
+					game->map_width = ft_strlen(line) - 1;
+				game->map_height+= 1;
 				tmp = ft_strdup(map);
 				if(map)
 					free(map);
@@ -87,6 +92,8 @@ bool	parssing(t_config *game, char *f_name)
 		}
 		line = get_next_line(fd);
 	}
+	printf("map width : %d\n", game->map_width);
+	printf("map height : %d\n", game->map_height);
 	parssing_map(game, map);
 	return (true);
 }
