@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 18:02:23 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/26 22:46:05 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/27 16:56:38 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ bool	parssing(t_config *game, char *f_name)
 	game->map_width = 0;
 	game->map_height = 0;
 	if (!check_name(f_name))
-		return (message_error("invalide file name"), false);
+		return (message_error(NAME), false);
 	fd = open(f_name, O_RDWR, 0777);
 	if(fd < 0)
-		return (message_error("error in open file"), false);
+		return (false);
 	line = get_next_line(fd);
 	while(line)
 	{
@@ -68,14 +68,14 @@ bool	parssing(t_config *game, char *f_name)
 				if(text_init(game, line))
 					list++;
 				else
-					return(message_error("textur parssing faild"), false);
+					return(message_error(TEXT), false);
 			}
 			else if(list >= 4 && list < 6)
 			{
 				if(color_init(game, line))
 					list++;
 				else
-					return(message_error("color parssing faild"), false);
+					return(message_error(COLOR), false);
 			}
 			else
 			{
@@ -92,8 +92,6 @@ bool	parssing(t_config *game, char *f_name)
 		}
 		line = get_next_line(fd);
 	}
-	printf("map width : %d\n", game->map_width);
-	printf("map height : %d\n", game->map_height);
 	parssing_map(game, map);
 	return (true);
 }

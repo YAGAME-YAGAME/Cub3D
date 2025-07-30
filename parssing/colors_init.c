@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 14:49:32 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/25 18:26:54 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/27 16:57:29 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ bool	color_init(t_config *game, char *str)
 
 	tab = ft_split(str, ' ');
 	if(!tab)
-		return(message_error("error split"), false);
+		return(false);
 	if(size_tab(tab) != 2)
 		return(clean_tab(&tab), false);
 	if(!parss_color(game, tab))

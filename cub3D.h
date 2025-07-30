@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 17:24:17 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/25 18:58:03 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:35:46 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # include <stdbool.h>
 # include <stdio.h>
 
+# define MALLOC "malloc faild"
+# define CRCTR "caracter not valide"
+# define WALL "wall not valide"
+# define COLOR "colors not valide"
+# define TEXT "textur not valide"
+# define NAME "file name not valide"
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
 # endif
@@ -30,17 +37,14 @@ typedef struct s_config
     char    *so_texture_path;
     char    *we_texture_path;
     char    *ea_texture_path;
-
-    int     floor_color;      // يمكن تخزين اللون كـ int RGB
+    int     floor_color;
     int     ceiling_color;
-
-    char    **map;            // الخريطة نفسها بعد تنظيفها (2D array of chars)
+    char    **map;
     int     map_width;
     int     map_height;
-
     int     player_x;
     int     player_y;
-    char    player_dir;       // 'N' أو 'S' أو 'E' أو 'W'
+    char    player_dir;
 } t_config;
 
 // read
@@ -62,4 +66,6 @@ char *remove_nline(char *str);
 bool 	text_init(t_config *game, char *line);
 //leaks
 void	clean_tab(char ***arg);
+//check walls
+bool	check_walls(int size, char **map);
 #endif

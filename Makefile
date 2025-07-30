@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = cub3D.c \
-	   parssing/parssing.c			\
+	   parssing/read_file.c			\
 	   parssing/get_next_line.c		\
 	   parssing/file_name.c			\
 	   parssing/errors.c			\
@@ -11,7 +11,8 @@ SRCS = cub3D.c \
 	   parssing/parssing_utils.c	\
 	   parssing/texture_init.c		\
 	   parssing/colors_init.c		\
-	   parssing/map_parss.c			\
+	   parssing/parssing_map.c			\
+	   parssing/check_wall.c		\
 
 OBJS = $(SRCS:.c=.o)
 LIB = libft/libft.a

@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 23:08:53 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/24 23:29:44 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/27 16:58:39 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ bool 	text_init(t_config *game, char *line)
 
 	tb_text = ft_split(line, ' ');
 	if(!tb_text)
-		return(message_error("error split lines"), 2);
+		return(false);
+	if(size_tab(tb_text) > 2)
+		return(clean_tab(&tb_text), false);
 	if(tb_text[0] && tb_text[1] && !ft_strcmp(tb_text[0], "NO"))
 	{
 		if(!no_init(game, tb_text[1]))
@@ -97,7 +99,6 @@ bool 	text_init(t_config *game, char *line)
 			return(clean_tab(&tb_text), false);
 	}
 	else
-		return(false);
-	clean_tab(&tb_text);
-	return(1);
+		return (false);
+	return (clean_tab(&tb_text), true);
 }
