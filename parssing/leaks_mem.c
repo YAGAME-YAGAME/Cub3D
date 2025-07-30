@@ -6,21 +6,20 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 19:29:10 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/24 19:43:08 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:17:47 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../cub3D.h"
+#include "../cub3D.h"
 
 void	clean_tab(char ***arg)
 {
 	int	i;
 
 	i = 0;
-
-	if(*arg && **arg)
+	if (*arg && **arg)
 	{
-		while((*arg)[i])
+		while ((*arg)[i])
 		{
 			free((*arg)[i]);
 			i++;

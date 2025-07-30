@@ -22,11 +22,11 @@ char	**map_vertical(int size, char **map)
 	i = 0;
 	len = ft_strlen(map[0]);
 	new = malloc(sizeof(char *) * (len + 1));
-	while(i < len)
+	while (i < len)
 	{
 		j = 0;
 		new[i] = malloc(size + 1);
-		while(j < size)
+		while (j < size)
 		{
 			new[i][j] = map[j][i];
 			j++;
@@ -48,7 +48,7 @@ bool	check_line(char *str)
 	split_line = ft_split(str, ' ');
 	if (!split_line)
 		return (false);
-	while(split_line[i])
+	while (split_line[i])
 	{
 		len = ft_strlen(split_line[i]);
 		if (split_line[i][0] != '1' || split_line[i][len - 1] != '1')
@@ -67,7 +67,7 @@ bool	check_map(char **map)
 	int	i;
 
 	i = 0;
-	while(map[i])
+	while (map[i])
 	{
 		if (!check_line(map[i]))
 			return (false);
@@ -78,7 +78,7 @@ bool	check_map(char **map)
 
 bool	check_walls(int size, char **map)
 {
-	char **vertical;
+	char	**vertical;
 
 	vertical = map_vertical(size, map);
 	if (!check_map(vertical) || !check_map(map))

@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 18:04:06 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/25 18:06:39 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:17:21 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	message_error(char *str)
 {
-	// red error message
 	ft_putstr_fd("\033[31mError\n", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd("\033[0m", 2);
-
 }

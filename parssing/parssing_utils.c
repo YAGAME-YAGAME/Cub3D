@@ -6,13 +6,13 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 23:10:21 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/25 14:55:02 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:35:25 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-char *remove_nline(char *str)
+char	*remove_nline(char *str)
 {
 	int		len;
 	char	*dest;
@@ -22,23 +22,23 @@ char *remove_nline(char *str)
 	i = 0;
 	j = 0;
 	len = 0;
-	while(str[i])
+	while (str[i])
 	{
-		if(str[i] != '\n')
+		if (str[i] != '\n')
 			len++;
 		i++;
 	}
 	dest = malloc(len + 1);
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
-		if(str[i] != '\n')
+		if (str[i] != '\n')
 			dest[j++] = str[i++];
 		else
 			i++;
 	}
 	dest[j] = 0;
-	return(dest);
+	return (dest);
 }
 
 int	size_tab(char **str)
@@ -46,9 +46,9 @@ int	size_tab(char **str)
 	int	len;
 
 	len = 0;
-	if(!str)
+	if (!str)
 		return (0);
 	while (str[len])
 		len++;
-	return(len);
+	return (len);
 }
