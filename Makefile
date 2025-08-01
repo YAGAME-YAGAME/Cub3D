@@ -11,10 +11,10 @@ SRCS = cub3D.c \
 	   parssing/file_name.c			\
 	   parssing/errors.c			\
 	   parssing/leaks_mem.c			\
-	   parssing/parssing_utils.c	\
+	   parssing/parssing_utils.c		\
 	   parssing/texture_init.c		\
 	   parssing/colors_init.c		\
-	   parssing/parssing_map.c			\
+	   parssing/parssing_map.c		\
 	   parssing/check_wall.c		\
 	   game_start/init_game.c		\
 
