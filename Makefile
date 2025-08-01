@@ -39,5 +39,12 @@ fclean: clean
 	@rm -f $(NAME)
 	@make fclean -C libft
 
+mlx:
+	@git clone https://github.com/codam-coding-college/MLX42.git
+
+build:
+	@cmake MLX42 -B MLX42/build
+	@make -C MLX42/build -j4
+
 re: fclean all
 .PHONY: all clean fclean re
