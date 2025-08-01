@@ -1,6 +1,9 @@
 NAME = cub3D
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+MLXFLAGS = -framework Cocoa -framework OpenGL -framework IOKit 
+GLFW_PATH = $(shell brew --prefix glfw)/lib
+
 
 SRCS = cub3D.c \
 	   parssing/read_file.c			\
@@ -13,6 +16,7 @@ SRCS = cub3D.c \
 	   parssing/colors_init.c		\
 	   parssing/parssing_map.c			\
 	   parssing/check_wall.c		\
+	   game_start/init_game.c		\
 
 OBJS = $(SRCS:.c=.o)
 LIB = libft/libft.a
@@ -20,8 +24,7 @@ LIB = libft/libft.a
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
-	$(CC) $(CFLAGS) $(LIB) $(OBJS) -o $(NAME)
-
+	$(CC) $(CFLAGS) $(LIB) $(OBJS)  $(MLXFLAGS) MlX42/build/libmlx42.a -Iinclude -lglfw -L$(GLFW_PATH) -o $(NAME)
 %.o: %.c cub3D.h
 	$(CC) $(CFLAGS) -c $< -o $@
 

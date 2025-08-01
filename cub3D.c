@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yagame <yagame@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 17:49:15 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/30 18:12:03 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/08/01 04:15:10 by yagame           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+#include "MLX42/include/MLX42/MLX42.h"
+
+
 
 void	desplay_struct(t_config *game)
 {
@@ -40,16 +43,15 @@ void	desplay_struct(t_config *game)
 
 int	main(int ac, char **av)
 {
-	t_config	*game;
-
-	game = malloc(sizeof(t_config));
-	if (!game)
+	t_game	game;
+	
+	game.conf = malloc(sizeof(game.conf));
+	if (!game.conf)
 		return (message_error("error malloc"), 1);
-	if (ac == 2)
-	{
-		if (parssing(game, av[1]))
-			desplay_struct(game);
-	}
-	else
+	if (ac != 2)
 		message_error("error in argument");
+	if (!parssing(game.conf, av[1]))
+		{return (1);}
+	if(start_game(&game))
+		return (EXIT_FAILURE);
 }
