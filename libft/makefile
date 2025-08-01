@@ -14,7 +14,7 @@ SOURCES = ft_strlen.c	\
 OBJECTS = $(SOURCES:.c=.o)
 
 AR = ar rcs
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)

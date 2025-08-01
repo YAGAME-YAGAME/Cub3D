@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yagame <yagame@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 17:24:17 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/07/30 18:14:19 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/08/01 04:37:18 by yagame           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <stdio.h>
+# include <stdint.h>
+#include "MLX42/include/MLX42/MLX42.h"
 
 # define MALLOC "malloc faild"
 # define CRCTR "caracter not valide"
@@ -30,6 +32,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
 # endif
+
 
 typedef struct s_config
 {
@@ -46,6 +49,13 @@ typedef struct s_config
 	int		player_y;
 	char	player_dir;
 }	t_config;
+
+typedef struct s_game
+{
+	mlx_t *mlx;
+	t_config *conf;
+	
+} t_game;
 
 // read
 char	*get_next_line(int fd);
@@ -68,4 +78,11 @@ bool	text_init(t_config *game, char *line);
 void	clean_tab(char ***arg);
 //check walls
 bool	check_walls(int size, char **map);
+
+
+
+// mlx helper function
+int 		start_game(t_game *game);
+uint32_t 	rgb_to_mlx_color(int r, int g, int b, int a);
+void 		fill_rect(mlx_image_t *img, int x, int y, int width, int height, uint32_t color);
 #endif
