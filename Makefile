@@ -45,6 +45,8 @@ mlx:
 build:
 	@cmake MLX42 -B MLX42/build
 	@make -C MLX42/build -j4
+mlxclean:
+	@rm -rf MLX42
 
 re: fclean all
 .PHONY: all clean fclean re
